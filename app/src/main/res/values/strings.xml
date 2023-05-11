@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">Wk4Reservation</string>
+    <string name="app_name">Reservation</string>
+    <string name="name">Enter your name:</string>
+    <string name="telephone">Enter your phone number:</string>
+    <string name="size">Enter number of people:</string>
+    <string name="smoke">Smoking table</string>
+    <string name="reserve">Reserve</string>
+    <string name="reset">Reset</string>
+    <string name="reservation">----RESERVATION----</string>
+    <string name="small_text">Please enter your details below</string>
+    <string name="Name">Enter your name</string>
+    <string name="Phone">Enter your mobile number</string>
+    <string name="Size">Enter your number of pax</string>
+    <string name="Table">Smoking table</string>
+    <string name="small_text_date">Booking Date</string>
+    <string name="small_text_time">Booking Time</string>
 </resources>
