@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText Name;
@@ -41,6 +43,28 @@ public class MainActivity extends AppCompatActivity {
         Reserve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (Name.getText().toString().isEmpty() || Size.getText().toString().isEmpty() || Phone.getText().toString().isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Do not leave blanks!!", Toast.LENGTH_SHORT).show();
+                }
+                Calendar current = Calendar.getInstance();
+                Calendar reservation = Calendar.getInstance();
+                reservation.set(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(),
+                        timePicker.getHour(), timePicker.getMinute());
+                if (current.after(reservation)) {
+                    Toast.makeText(MainActivity.this, "You can't time travel! Please select future date and time", Toast.LENGTH_LONG).show();
+                }
+                timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+                    @Override
+                    public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                        if (hourOfDay<8) {
+                            Toast.makeText(MainActivity.this, "Unfortunately, we are closed from 9pm to 7.59am :(", Toast.LENGTH_LONG).show();
+                        } else if (hourOfDay >= 21) {
+                            Toast.makeText(MainActivity.this, "Unfortunately, we only open from 8am to 8.59pm :(", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
 
                 String SmokeTable = "";
                 if (checkBox.isChecked()) {
